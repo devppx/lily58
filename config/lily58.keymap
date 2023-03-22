@@ -15,7 +15,7 @@
 
         go_to_num_pad_layer {
             bindings = <&to 3>;
-            key-positions = <53 26 25>;
+            key-positions = <26 25 52>;
         };
 
         slash {
