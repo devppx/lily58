@@ -9,6 +9,18 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
+
+/ {
+    behaviors {
+        bkspcdel: backspace_delete {
+            compatible = "zmk,behaviors-mod-morph";
+            label = "GRAVE_ESCAPE";
+            binding-cells =  <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <MOD_LSFT>;
+        };
+    };
+};
+
 / {
     combos {
         compatible = "zmk,combos";
