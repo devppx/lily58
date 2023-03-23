@@ -14,7 +14,7 @@
     behaviors {
         bkspcdel: backspace_delete {
             compatible = "zmk,behaviors-mod-morph";
-            label = "GRAVE_ESCAPE";
+            label = "BACKSPACE_DELETE";
             binding-cells =  <&kp BACKSPACE>, <&kp DELETE>;
             mods = <MOD_LSFT>;
         };
