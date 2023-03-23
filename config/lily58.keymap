@@ -12,22 +12,12 @@
 / {
     behaviors {
         bkspcdel: backspace_delete {
-            compatible = "zmk,behaviors-mod-morph";
+            compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_DELETE";
             binding-cells =
                 <&kp BACKSPACE>,
                 <&kp DELETE>;
 
-            mods = <MOD_LSFT>;
-        };
-        bkspcdel: backspace_delete {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACE_DELETE";
-            bindings =
-                <&kp BACKSPACE>,
-                <&kp DELETE>;
-
-            #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
