@@ -14,10 +14,10 @@
         bkspcdel: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_DELETE";
+            #binding-cells = <0>;
             binding-cells =
                 <&kp BACKSPACE>,
                 <&kp DELETE>;
-
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
