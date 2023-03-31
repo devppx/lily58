@@ -15,7 +15,10 @@
             compatible = "zmk,behavior-mod-morph";
             label = "BACKSPACE_DELETE";
             #binding-cells = <0>;
-            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            bindings =
+                <&kp BACKSPACE>,
+                <&kp DELETE>;
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_RSFT)>;
         };
@@ -104,7 +107,7 @@
                                  &kp LALT  &kp LGUI   &mo 1  &kp SPACE   &kp RET   &mo 2  &kp BSPC  &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp K_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp NUMBER_1 A>;
         };
 
         lower_layer {
