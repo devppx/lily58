@@ -1,3 +1,6 @@
+#include "lily58enc.dtsi"
+
+
 &left_encoder {
     status = "okay";
 };
