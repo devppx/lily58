@@ -1,0 +1,11 @@
+file_format: "1"
+id: lily58_enc
+name: lily58_enc
+type: shield
+requires: [nrfmicro_13]
+features:
+  - keys
+  - encoder
+siblings:
+  - lily5_enc_left
+  - lily5_enc_right
