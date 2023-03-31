@@ -46,10 +46,6 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,6) RC(3,6) RC(3,7) 
 		
 	};
 
-//  P0.02 a port 12 
-//  P0.20 b port 16
-// EBYTE nRF52840 BLE 5.0 Transceptor inalámbrico 8dbm 120m 2.4GHz E73-2G4M08S1C
-
 	left_encoder: encoder_left {
 		compatible = "alps,ec11";
 		label = "LEFT_ENCODER";
