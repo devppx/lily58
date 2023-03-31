@@ -1,7 +1,8 @@
 file_format: "1"
 id: lily58_enc
-name: lily58_enc
+name: Lily58_enc
 type: shield
+url: https://github.com/orvisevans/Lily58-Glow-Enc
 requires: [nrfmicro_13]
 features:
   - keys
