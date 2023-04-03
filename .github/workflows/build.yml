@@ -1,6 +1,6 @@
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  runs-on: self-hosted
   build:
+    runs-on: self-hosted
     uses: devppx/zmk/.github/workflows/build-user-config.yml@sensor_encoder
