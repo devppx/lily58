@@ -6,7 +6,7 @@ url: https://github.com/orvisevans/Lily58-Glow-Enc
 requires: [pro_micro]
 features:
   - keys
-  - display
+  - encoder
 siblings:
   - lily58_enc_left
   - lily58_enc_right
