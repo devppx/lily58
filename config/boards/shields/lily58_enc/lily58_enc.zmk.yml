@@ -8,5 +8,5 @@ features:
   - keys
   - display
 siblings:
-  - lily58_left
-  - lily58_right
+  - lily58_enc_left
+  - lily58_enc_right
