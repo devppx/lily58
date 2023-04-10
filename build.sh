@@ -14,7 +14,7 @@ config_path='/workspaces/zmk/lily58/config'
 zmk_root_path='/workspaces/zmk'
 zmk_app_path='/workspaces/zmk/app'
 pristine_build_flag=''  #clean build flag
-ui_config_flag=''
+
 # Define usage message function
 usage() {
     # Loop through the array and concatenate each element with |
@@ -30,7 +30,6 @@ usage() {
     echo "  -s SHIELD_NAME          Pick a specific shields[]. Avaliable shields: $shields_text"
     echo "  -b BOARD_NAME           Board name, default value [$board]"
     echo "  -c USER_CONFIG_PATH     ZMK user config path"
-    echo "  -u                      ZMK UI config"
     echo "  -v                      Verbose output (async build will be disabled)"
     echo "  -p                      Enable pristine build - clean build / do not use previous build caches"
     echo "  -r                      Build setting reset firmware for split keyboard halves unable to pair issue. Not compatible with -s option"
@@ -80,8 +79,6 @@ while getopts "hs:c:vpi" opt; do
         i )
             init_build_env
             ;;
-        u )
-            ui_config_flag='-t menuconfig'
     esac
 done
 shift $((OPTIND -1))
@@ -93,11 +90,11 @@ do
           nohup sh -c "cd $zmk_app_path && west build $pristine_build_flag -d build/$shiled -b $board -- -DSHIELD=$shiled -DZMK_CONFIG=$config_path && cp /workspaces/zmk/app/build/$shiled/zephyr/zmk.uf2 /workspaces/zmk/build/$shiled-$timestamp.u2" > $shiled\\build.log 2>&1 &
         pids+=($!)  # Add the process ID of the first command to the array
     else 
-        sh -c "cd $zmk_app_path && west build $ui_config_flag $pristine_build_flag -d build/$shiled -b $board -- -DSHIELD=$shiled -DZMK_CONFIG=$config_path && cp /workspaces/zmk/app/build/$shiled/zephyr/zmk.uf2 /workspaces/zmk/build/$shiled-$timestamp.u2"
+        sh -c "cd $zmk_app_path && west build $pristine_build_flag -d build/$shiled -b $board -- -DSHIELD=$shiled -DZMK_CONFIG=$config_path && cp /workspaces/zmk/app/build/$shiled/zephyr/zmk.uf2 /workspaces/zmk/build/$shiled-$timestamp.u2"
     fi
 done
 
-if [[ "$async" = true ]]; then
+if [[ $async ]]; then
     for pid in "${pids[@]}"; do
         wait $pid
     done
