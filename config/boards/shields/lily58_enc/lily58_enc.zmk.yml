@@ -7,6 +7,7 @@ requires: [pro_micro]
 features:
   - keys
   - display
+  - encoder
 siblings:
   - lily58_enc_left
   - lily58_enc_right
