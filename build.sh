@@ -16,6 +16,8 @@ zmk_app_path='/workspaces/zmk-retry/app'
 pristine_build_flag=''  #clean build flag
 ui_config_flag=''
 ERROR_BUILD_FAILED=9
+timestamp=$(date +%Y-%m-%d_%H-%M-%S)
+
 # Define usage message function
 usage() {
     # Loop through the array and concatenate each element with |
@@ -89,7 +91,6 @@ while getopts "hs:c:vpi" opt; do
 done
 shift $((OPTIND -1))
 
-timestamp=$(date +%Y-%m-%d_%H-%M-%S)
 mkdir -p $zmk_root_path/build
 declare -A pid_shield
 for shield in ${shields[@]}
@@ -97,7 +98,7 @@ do
     if [[ "$async" = true ]] && [[ "$verbose" = false ]] && [[ "$ui_config_flag" = '' ]]; then
         # echo start building $board - $shield
         # nohup sh -c "sleep 2 && echo 1 || echo 000 && echo 111" &
-        nohup sh -c "cd $zmk_app_path && west build $pristine_build_flag -d build/$shield -b $board -- -DSHIELD=$shield -DZMK_CONFIG=$config_path || exit $ERROR_BUILD_FAILED && cp $zmk_app_path/build/$shield/zephyr/zmk.uf2 $zmk_root_path/build/$shield-$timestamp.u2" > $zmk_app_path/build/$shield/zmk-build.log 2>&1 &
+        nohup sh -c "cd $zmk_app_path && west build $pristine_build_flag -d build/$shield -b $board -- -DSHIELD=$shield -DZMK_CONFIG=$config_path && cp $zmk_app_path/build/$shield/zephyr/zmk.uf2 $zmk_root_path/build/$shield-$timestamp.u2" > $zmk_app_path/build/$shield/zmk-build.log 2>&1 &
         pid=$!
         # pids+=($pid)  
         pid_shield[$pid]=$shield # Link process ID and building shield
@@ -110,13 +111,28 @@ pids=("${!pid_shield[@]}")
 
 if [[ "$async" = true ]]; then
     for pid in "${pids[@]}"; do
-        echo waitting "pid[$pid] - building ${pid_shield[$pid]}..."
-        wait $pid
-        exit_code=$?
-        if [[ $exit_code = $ERROR_BUILD_FAILED ]]; then
-            echo "pid[$pid] - building ${pid_shield[$pid]} failed. Error log: $zmk_app_path/build/$shield/zmk-build.log"
-        fi
+        echo "pid[$pid] - building ${pid_shield[$pid]}..."
+    done
+    while [[ "${#pids[@]}" -gt 0 ]]; do
+        for pid_index in "${!pids[@]}"; do
+            pid="${pids[$pid_index]}"
+            # check if the process has finished
+            if kill -0 "$pid" >/dev/null 2>&1; then
+                continue
+            else
+                # remove the finished process from the array
+                unset "pids[$pid_index]"
+                if [ -f "$zmk_root_path/build/${pid_shield[$pid]}-$timestamp.u2" ]; then 
+                    echo "pid[$pid] - building ${pid_shield[$pid]} finished successfully. U2 file is saved at: $zmk_root_path/build/${pid_shield[$pid]}-$timestamp.u2"
+                else
+                    echo "pid[$pid] - building ${pid_shield[$pid]} failed. Error log: $zmk_app_path/build/${pid_shield[$pid]}/zmk-build.log"
+                fi
+            fi
+        done
+        # wait a bit before checking again
+        sleep 1
     done
 fi
+
 end=$(date +%s.%N)
 echo "Timestamp: $timestamp | Time elapsed: $(echo $end '-' $start | bc) seconds"
