@@ -9,10 +9,10 @@ config ZMK_SPLIT_ROLE_CENTRAL
 
 endif
 
-# if SHIELD_LILY58_ENC_LEFT || SHIELD_LILY58_ENC_RIGHT
+if SHIELD_LILY58_ENC_LEFT || SHIELD_LILY58_ENC_RIGHT
 
-# config ZMK_SPLIT
-# 	default y
+config ZMK_SPLIT
+	default y
 
 # if ZMK_DISPLAY
 
@@ -44,4 +44,4 @@ endif
 
 # endif # LVGL
 
-# endif
+endif
