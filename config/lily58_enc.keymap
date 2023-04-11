@@ -159,8 +159,8 @@
 
             bindings = <
 &trans                &trans    &trans        &trans     &trans                 &trans                               &trans  &trans      &trans  &trans         &trans            &trans
-&trans                &trans    &trans        &kp UP     &trans                 &trans                            &kp EQUAL  &kp N7      &kp N8  &kp N9       &kp PLUS         &kp MINUS
-&trans  &kp LEFT_PARENTHESIS  &kp LEFT      &kp DOWN  &kp RIGHT  &kp RIGHT_PARENTHESIS                            &kp CARET  &kp N4      &kp N5  &kp N6      &kp ASTRK         &kp SLASH
+&trans                &trans    &trans        &kp UP     &trans                 &trans                            &kp EQUAL  &kp N7      &kp N8  &kp N9      &kp MINUS         &kp ASTRK
+&trans  &kp LEFT_PARENTHESIS  &kp LEFT      &kp DOWN  &kp RIGHT  &kp RIGHT_PARENTHESIS                            &kp CARET  &kp N4      &kp N5  &kp N6       &kp PLUS         &kp SLASH
 &trans                &trans    &trans        &trans   &kp AMPS                 &kp AT     &trans     &trans    &kp PERCENT  &kp N1      &kp N2  &kp N3  &kp LESS_THAN  &kp GREATER_THAN
                                         &kp LEFT_ALT   &kp LGUI                  &to 0  &kp ENTER  &kp SPACE  &kp BACKSPACE  &kp N0  &kp KP_DOT
             >;
