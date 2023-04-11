@@ -139,10 +139,10 @@
             //                     |      |      |      |        |  |       |      |       |       |
 
             bindings = <
-    &trans        &trans        &trans        &trans        &trans        &trans                       &trans        &trans        &trans        &trans        &trans    &trans
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                   &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP    &trans
-    &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp F6                     &kp HOME      &kp LEFT      &kp DOWN        &kp UP     &kp RIGHT   &kp END
-    &kp F7        &kp F8        &kp F9       &kp F10       &kp F11       &kp F12  &trans  &trans  &kp KP_PLUS     &kp MINUS     &kp EQUAL      &kp LBKT      &kp RBKT  &kp BSLH
+&trans    &trans    &trans        &trans                &trans                 &trans                               &trans  &trans      &trans  &trans           &trans            &trans
+&kp LG(LS(N4))  &trans     &kp PAGE_UP        &kp UP_ARROW      &kp PAGE_DOWN       &kp HOME                            &kp HOME             &kp CARET            &kp PAGE_UP             &kp UP_ARROW       &kp PAGE_DOWN      &kp HOME     &kp LG(LS(N4))
+&trans          &trans     &kp LEFT_ARROW     &kp DOWN_ARROW    &kp RIGHT_ARROW     &kp END                             &kp MINUS            &kp LEFT_ARROW          &kp DOWN_ARROW     &kp RIGHT_ARROW    &kp END      &trans
+&out OUT_TOG    &trans     &trans             &trans            &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)                 &kp LC(LEFT_ARROW)   &kp LC(RIGHT_ARROW)     &trans             &trans             &trans       &out OUT_TOG
                                               &trans        &trans        &trans  &trans  &trans       &trans        &trans        &trans
             >;
 
@@ -168,14 +168,23 @@
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
-        layer_4 {
+        adjust_layer {
+            // ------------------------------------------------------------------------------------------------------------
+            // |       |     |     |      |      |      |                   |      |       |       |      |       |       |
+            // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
+            // |   F1  |  F2 |  F3 |  F4  |  F5  |  F6  |                   |      |   <-  |   v   |  ^   |  ->   |       |
+            // |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
+            //                     |      |      |      |        |  |       |      |       |       |
+
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans    &trans        &trans                &trans                 &trans                               &trans  &trans      &trans  &trans           &trans            &trans
+&trans    &trans    &kp UP        &trans                &trans                 &trans                            &kp EQUAL  &kp N7      &kp N8  &kp N9      &kp KP_PLUS      &kp KP_MINUS
+&trans  &kp LEFT  &kp DOWN     &kp RIGHT  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                            &kp CARET  &kp N4      &kp N5  &kp N6  &kp KP_MULTIPLY     &kp KP_DIVIDE
+&trans    &trans    &trans        &trans              &kp AMPS                 &kp AT     &trans     &trans    &kp PERCENT  &kp N1      &kp N2  &kp N3    &kp LESS_THAN  &kp GREATER_THAN
+                            &kp LEFT_ALT              &kp LGUI                  &none  &kp SPACE  &kp ENTER  &kp BACKSPACE  &kp N0  &kp KP_DOT
             >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
     };
 };
