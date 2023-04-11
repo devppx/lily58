@@ -10,3 +10,4 @@ features:
 siblings:
   - lily5_enc_left
   - lily5_enc_right
+  - settings_reset
