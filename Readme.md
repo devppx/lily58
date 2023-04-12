@@ -14,6 +14,8 @@ https://github.com/c0ngnh/ZMK-keymap-editor
 ## Online editor
 https://nickcoutsos.github.io/keymap-editor/  
 
+## keyboard layout editor
+http://www.keyboard-layout-editor.com/#/gists/e9c3507799fba406a09fda8a2630ea69
 
 
 https://zmk.dev/docs/troubleshooting
