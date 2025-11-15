@@ -37,9 +37,9 @@
             bindings = <&mo>, <&kt>;
 
             #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <150>;
-            quick-tap-ms = <80>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <100>;
         };
     };
 
