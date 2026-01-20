@@ -38,5 +38,9 @@ https://github.com/tmk/keyboard_parts.pretty
 https://github.com/egladman/keebs.pretty
 https://github.com/perigoso/keyswitch-kicad-library
 
-
+# Board
+https://github.com/joric/nrfmicro/     
+ 
+Note:
+board name: nrfmicro_13 is no longer supported officially in zmk. 
 

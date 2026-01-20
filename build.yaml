@@ -13,9 +13,9 @@
 #
 ---
 include:
-  - board: nrfmicro_13
+  - board: nrfmicro/nrf52840
     shield: lily58_enc_left
-  - board: nrfmicro_13
+  - board: nrfmicro/nrf52840
     shield: lily58_enc_right
-  - board: nrfmicro_13
+  - board: nrfmicro/nrf52840
     shield: settings_reset
